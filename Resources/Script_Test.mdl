@@ -1,0 +1,16 @@
+|Script_Test|
+\
+    |type|
+    \
+        "LScript::Script_Stub"
+    /
+
+    |source_code|
+    \
+        "
+
+int var = 10;
+
+        "
+    /
+/
