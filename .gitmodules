@@ -1,0 +1,9 @@
+[submodule "L_Utility"]
+	path = L_Utility
+	url = https://github.com/Letinemeso/L_Utility.git
+[submodule "L_Variable"]
+	path = L_Variable
+	url = https://github.com/Letinemeso/L_Variable.git
+[submodule "L_Script"]
+	path = L_Script
+	url = https://github.com/Letinemeso/L_Script.git
