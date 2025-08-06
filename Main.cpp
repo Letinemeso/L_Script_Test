@@ -19,10 +19,10 @@ int main()
 
     LScript::Script_Stub* stub = (LScript::Script_Stub*)object_constructor.construct(reader.get_stub("Script_Test"));
     LScript::Script* script = LScript::Script_Stub::construct_from(stub);
-
-
-
     delete stub;
+
+    script->run();
+
     delete script;
 
 

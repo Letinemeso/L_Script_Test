@@ -9,7 +9,17 @@
     \
         "
 
-int var = 10;
+LDS::Vector<std::string> string;
+
+int var(int arg, bool b)
+{
+
+}
+
+void main()
+{
+
+}
 
         "
     /
