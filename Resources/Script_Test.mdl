@@ -9,17 +9,22 @@
     \
         "
 
-LDS::Vector<std::string> string;
-
-int var(int arg, bool b)
+void assign_5(int& _arg, bool _b)
 {
-
+    _arg.set(5);
 }
 
 void main()
 {
     int test_var;
     test_var.set( 123 );
+
+    debug_print( test_var );
+
+    int other_test_var;
+    assign_5(other_test_var, true);
+
+    debug_print( other_test_var );
 }
 
         "
