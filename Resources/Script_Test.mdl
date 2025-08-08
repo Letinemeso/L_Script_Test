@@ -19,6 +19,7 @@ int var(int arg, bool b)
 void main()
 {
     int test_var;
+    test_var.set( 123 );
 }
 
         "
