@@ -25,6 +25,8 @@ void main()
     assign_5(other_test_var, true);
 
     debug_print( other_test_var );
+
+    context_object.print_shit(1, true);
 }
 
         "
