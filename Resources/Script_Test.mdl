@@ -26,7 +26,9 @@ void main()
 
     debug_print( other_test_var );
 
-    context_object.print_shit(1, true);
+    context_object.set( 55555 );
+
+    debug_print( context_object );
 }
 
         "
