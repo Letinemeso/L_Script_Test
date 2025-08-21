@@ -14,17 +14,6 @@
 
 
 
-
-// #define SCRIPTABLE_FUNCTION_ARGS_LIST_END \
-//     > args_container;
-
-
-template <typename _Owner_Type, typename _Return_Type, typename... _Arg_Types>
-LST::Arguments_Container<_Arg_Types...> construct_args_container(_Return_Type(_Owner_Type::*_func)(_Arg_Types...))
-{
-    return LST::Arguments_Container<_Arg_Types...>();
-}
-
 class Test
 {
 public:
@@ -96,15 +85,15 @@ int main()
     LScript::Script* script = LScript::Script_Stub::construct_from(stub);
     delete stub;
 
-    // Test test;
-    // script->set_context_object("Test", &test);
+    Test test;
+    script->set_context_object("Test", &test);
 
-    int variable = 0;
-    script->set_context_object("int", &variable);
+    // int variable = 0;
+    // script->set_context_object("int", &variable);
 
     script->run();
 
-    std::cout << "variable: " << variable << std::endl;
+    // std::cout << "variable: " << variable << std::endl;
 
     delete script;
 
