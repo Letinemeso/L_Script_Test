@@ -9,44 +9,15 @@
     \
         "
 
-int get_5()
-{
-    return 5;
-}
-
-void print(int& _arg)
-{
-    debug_print( _arg );
-}
-
-int get_same(int _value)
-{
-    return _value;
-}
-
-int get_weird_stuff(int _value_1, int _value_2)
-{
-    debug_print( 'replacing value ' );
-    debug_print( _value_1 );
-    debug_print( 'with value' );
-    debug_print( _value_2 );
-
-    _value_1.set(_value_2);
-    return _value_1;
-}
-
-void assign_5(int& _arg, bool _b)
-{
-    _arg.set(5);
-}
-
 void main()
 {
-    int test_var;
-    test_var.set(get_weird_stuff(get_weird_stuff(get_weird_stuff(123, 6), get_weird_stuff(123, 33)), get_weird_stuff(123, get_weird_stuff(123, get_weird_stuff(123, 9)))));
+    bool test;
+    test.set(true);
 
-    print(get_weird_stuff(123, test_var));
-
+    if(test)
+    {
+        debug_print(1);
+    }
 }
 
         "
