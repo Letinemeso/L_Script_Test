@@ -25,8 +25,8 @@ public:
     OVERRIDE_ON_VALUES_ASSIGNED
 
 private:
-    using string = std::string;
-    string m_string;
+    std::string m_string;
+    unsigned int m_number = 0;
 
     LScript::Script_Stub* m_script_stub = nullptr;
     LScript::Script* m_script = nullptr;
@@ -37,6 +37,11 @@ public:
         m_string = _string;
     }
 
+    void set_number(unsigned int _number)
+    {
+        m_number = _number;
+    }
+
 public:
     Test()
     {
@@ -44,7 +49,12 @@ public:
 
         SCRIPTABLE_FUNCTION_INITIALIZATION_BEGIN(Test);
         SCRIPTABLE_FUNCTION_NAME(set_string);
-        SCRIPTABLE_FUNCTION_ARG(string);
+        SCRIPTABLE_FUNCTION_ARG(std::string);
+        SCRIPTABLE_FUNCTION_INITIALIZATION_END;
+
+        SCRIPTABLE_FUNCTION_INITIALIZATION_BEGIN(Test);
+        SCRIPTABLE_FUNCTION_NAME(set_number);
+        SCRIPTABLE_FUNCTION_ARG(unsigned int);
         SCRIPTABLE_FUNCTION_INITIALIZATION_END;
 
         SCRIPTABLE_FUNCTIONS_INITIALIZATION_END;
@@ -60,6 +70,7 @@ public:
     {
         m_script->run();
         std::cout << "m_string: " << m_string << std::endl;
+        std::cout << "m_number: " << m_number << std::endl;
     }
 
 };

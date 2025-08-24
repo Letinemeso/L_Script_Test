@@ -12,6 +12,11 @@
 void main()
 {
     context_object.set_string('some text');
+
+    uint variable;
+    variable.set(1232131);
+
+    context_object.set_number(variable);
 }
 
         "
