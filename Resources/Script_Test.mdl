@@ -1,4 +1,4 @@
-|Script_Test|
+||script_stub||
 \
     |type|
     \
@@ -11,13 +11,7 @@
 
 void main()
 {
-    bool test;
-    test.set(true);
-
-    if(test)
-    {
-        debug_print(1);
-    }
+    context_object.set_string('some text');
 }
 
         "

@@ -1,0 +1,9 @@
+|Test_Test|
+\
+    |type|
+    \
+        "Test"
+    /
+
+    <<<Script_Test>>>
+/

@@ -13,90 +13,87 @@
 #include <Scriptable_Functions_Registration.h>
 
 
-
-class Test
+class Test : public LV::Variable_Base
 {
 public:
-    void print_shit(int, bool)
+    INIT_VARIABLE(Test, LV::Variable_Base)
+
+    INIT_CHILDS
+    ADD_CHILD("script_stub", m_script_stub);
+    CHILDS_END
+
+    OVERRIDE_ON_VALUES_ASSIGNED
+
+private:
+    using string = std::string;
+    string m_string;
+
+    LScript::Script_Stub* m_script_stub = nullptr;
+    LScript::Script* m_script = nullptr;
+
+public:
+    void set_string(std::string _string)
     {
-        std::cout << "shit" << std::endl;
+        m_string = _string;
     }
 
-    void print_number(int _number)
-    {
-        std::cout << "printing number: " << _number << std::endl;
-    }
-
-    // DECLARE_FUNCTION(void scriptable_func(int, bool))
-
+public:
     Test()
     {
         SCRIPTABLE_FUNCTIONS_INITIALIZATION_BEGIN;
 
         SCRIPTABLE_FUNCTION_INITIALIZATION_BEGIN(Test);
-        SCRIPTABLE_FUNCTION_NAME(print_shit);
-        SCRIPTABLE_FUNCTION_ARG(int);
-        SCRIPTABLE_FUNCTION_ARG(bool);
-        SCRIPTABLE_FUNCTION_INITIALIZATION_END;
-
-        SCRIPTABLE_FUNCTION_INITIALIZATION_BEGIN(Test);
-        SCRIPTABLE_FUNCTION_NAME(print_number);
-        SCRIPTABLE_FUNCTION_ARG(int);
+        SCRIPTABLE_FUNCTION_NAME(set_string);
+        SCRIPTABLE_FUNCTION_ARG(string);
         SCRIPTABLE_FUNCTION_INITIALIZATION_END;
 
         SCRIPTABLE_FUNCTIONS_INITIALIZATION_END;
     }
+
+    ~Test()
+    {
+        delete m_script;
+        delete m_script_stub;
+    }
+
+    void test()
+    {
+        m_script->run();
+        std::cout << "m_string: " << m_string << std::endl;
+    }
+
 };
 
-
-
-
-void test_func(int, bool)
+ON_VALUES_ASSIGNED_IMPLEMENTATION(Test)
 {
-    // std::cout << _int << ' ' << _bool << ' ' << _float << std::endl;
-    std::cout << "aaa" << std::endl;
+    m_script = LScript::Script_Stub::construct_from(m_script_stub);
+    delete m_script_stub;
+    m_script_stub = nullptr;
+
+    m_script->set_context_object("Test", this);
 }
+
+
+
 
 
 int main()
 {
-    // LST::Arguments_Container<int, bool> args_container;
-
-    // void* ptr = nullptr;
-    // args_container.init_pointer(0, ptr);
-
-    // int* iptr = (int*)ptr;
-    // *iptr = 213;
-
-    // args_container.call_with_args(&test_func);
-
-
-    // return 0;
-
     LV::Type_Manager::register_basic_types();
     LV::Object_Constructor object_constructor;
 
     LScript::register_types(object_constructor);
 
+    object_constructor.register_type<Test>();
+
     LV::MDL_Reader reader;
-    reader.parse_file("../Resources/Script_Test");
+    reader.parse_file("../Resources/Test_Test");
 
-    LScript::Script_Stub* stub = (LScript::Script_Stub*)object_constructor.construct(reader.get_stub("Script_Test"));
-    LScript::Script* script = LScript::Script_Stub::construct_from(stub);
-    delete stub;
+    Test* test = (Test*)object_constructor.construct(reader.get_stub("Test_Test"));
 
-    Test test;
-    script->set_context_object("Test", &test);
+    test->test();
 
-    // int variable = 0;
-    // script->set_context_object("int", &variable);
-
-    script->run();
-
-    // std::cout << "variable: " << variable << std::endl;
-
-    delete script;
-
+    delete test;
 
     return 0;
 }
