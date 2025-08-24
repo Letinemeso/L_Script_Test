@@ -9,9 +9,14 @@
     \
         "
 
+string get_string(string _str)
+{
+    return _str;
+}
+
 void main()
 {
-    context_object.set_string('some text');
+    context_object.set_string(get_string('balaclava'));
 
     uint variable;
     variable.set(1232131);
