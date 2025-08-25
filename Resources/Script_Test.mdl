@@ -100,23 +100,23 @@ string get_string(string _str)
 
 void main()
 {
-    context_object.set_string(get_string('balaclava'));
+    test.set_string(get_string('balaclava'));
     uint variable;
     variable.set(1232131);
-    context_object.set_number(variable);
+    test.set_number(variable);
 
-    context_object.print_data();
+    test.print_data();
 
     uint number;
-    number.set(context_object.number());
+    number.set(test.number());
     number.multiply(2);
 
-    context_object.set_number(number);
+    test.set_number(number);
 
-    context_object.print_data();
+    test.print_data();
 
     Uint_Vector vec;
-    vec.set(context_object.numbers());
+    vec.set(test.numbers());
 
     uint counter;
     counter.set(0);
@@ -125,6 +125,8 @@ void main()
         debug_print(vec.get(counter));
         counter.add(1);
     }
+
+    test_2.print_stuff();
 
     // test_int_vec();
     // test_string_vector();

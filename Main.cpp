@@ -25,6 +25,30 @@ public:
     OVERRIDE_ON_VALUES_ASSIGNED
 
 private:
+    class Test_2
+    {
+    public:
+        void print_stuff()
+        {
+            std::cout << "Test_2 prints stuff" << std::endl;
+        }
+
+        Test_2()
+        {
+            SCRIPTABLE_FUNCTIONS_INITIALIZATION_BEGIN;
+
+            SCRIPTABLE_FUNCTION_INITIALIZATION_BEGIN(Test_2);
+            SCRIPTABLE_FUNCTION_RETURN_TYPE(void);
+            SCRIPTABLE_FUNCTION_NAME(print_stuff);
+            SCRIPTABLE_FUNCTION_INITIALIZATION_END;
+
+            SCRIPTABLE_FUNCTIONS_INITIALIZATION_END;
+        }
+    };
+
+    Test_2 m_test;
+
+private:
     std::string m_string;
     unsigned int m_number = 0;
 
@@ -118,7 +142,8 @@ ON_VALUES_ASSIGNED_IMPLEMENTATION(Test)
     delete m_script_stub;
     m_script_stub = nullptr;
 
-    m_script->set_context_object("Test", this);
+    m_script->set_context_object("Test", "test", this);
+    m_script->set_context_object("Test_2", "test_2", &m_test);
 }
 
 
