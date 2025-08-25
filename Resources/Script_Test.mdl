@@ -9,6 +9,24 @@
     \
         "
 
+void test_string_vector()
+{
+    debug_print('------------------------------');
+
+    string str;
+    str.set('balaclava');
+
+    uint offset;
+    uint size;
+    offset.set(1);
+    size.set(7);
+    debug_print(str.substring(offset, size));
+
+    debug_print('------------------------------');
+}
+
+
+
 string get_string(string _str)
 {
     return _str;
@@ -17,13 +35,81 @@ string get_string(string _str)
 void main()
 {
     context_object.set_string(get_string('balaclava'));
-
     uint variable;
     variable.set(1232131);
-
     context_object.set_number(variable);
+
+    test_string_vector();
 }
 
         "
     /
 /
+
+#
+void test_int_vec()
+{
+    Int_Vector int_vec;
+    int_vec.resize_and_fill(10, 124531);
+
+    uint counter;
+
+    counter.set(0);
+
+    debug_print('------------------------------');
+
+    while(counter.less(int_vec.capacity()))
+    {
+        debug_print(int_vec.get(counter));
+        counter.add(1);
+    }
+
+    debug_print('------------------------------');
+
+    counter.set(0);
+
+    while(counter.less(int_vec.capacity()))
+    {
+        int counter_doubled;
+        counter_doubled.set(counter.to_int());
+        counter_doubled.multiply(2);
+
+        int_vec.set(counter, counter_doubled);
+        counter.add(1);
+    }
+
+    counter.set(0);
+
+    while(counter.less(int_vec.size()))
+    {
+        debug_print(int_vec.get(counter));
+        counter.add(1);
+    }
+
+    debug_print('------------------------------');
+
+    uint size_halved;
+    size_halved.set(int_vec.size());
+    size_halved.divide(2);
+
+    counter.set(0);
+
+    while(counter.less(size_halved))
+    {
+        int_vec.pop();
+        counter.add(1);
+    }
+
+    counter.set(0);
+
+    while(counter.less(int_vec.size()))
+    {
+        debug_print(int_vec.get(counter));
+        counter.add(1);
+    }
+
+    debug_print('------------------------------');
+
+    int_vec.clear();
+}
+#
