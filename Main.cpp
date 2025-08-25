@@ -48,23 +48,52 @@ public:
         std::cout << "m_number: " << m_number << std::endl;
     }
 
+    unsigned int number() const
+    {
+        return m_number;
+    }
+
+    LDS::Vector<unsigned int> numbers() const
+    {
+        LDS::Vector<unsigned int> vec;
+        vec.push(m_number);
+        vec.push(m_number);
+        vec.push(m_number);
+        vec.push(m_number);
+        vec.push(m_number);
+        return vec;
+    }
+
 public:
     Test()
     {
         SCRIPTABLE_FUNCTIONS_INITIALIZATION_BEGIN;
 
         SCRIPTABLE_FUNCTION_INITIALIZATION_BEGIN(Test);
+        SCRIPTABLE_FUNCTION_RETURN_TYPE(void);
         SCRIPTABLE_FUNCTION_NAME(set_string);
         SCRIPTABLE_FUNCTION_ARG(std::string);
         SCRIPTABLE_FUNCTION_INITIALIZATION_END;
 
         SCRIPTABLE_FUNCTION_INITIALIZATION_BEGIN(Test);
+        SCRIPTABLE_FUNCTION_RETURN_TYPE(void);
         SCRIPTABLE_FUNCTION_NAME(set_number);
         SCRIPTABLE_FUNCTION_ARG(unsigned int);
         SCRIPTABLE_FUNCTION_INITIALIZATION_END;
 
         SCRIPTABLE_FUNCTION_INITIALIZATION_BEGIN(Test);
+        SCRIPTABLE_FUNCTION_RETURN_TYPE(void);
         SCRIPTABLE_FUNCTION_NAME(print_data);
+        SCRIPTABLE_FUNCTION_INITIALIZATION_END;
+
+        SCRIPTABLE_FUNCTION_INITIALIZATION_BEGIN(Test);
+        SCRIPTABLE_FUNCTION_RETURN_TYPE(unsigned int);
+        SCRIPTABLE_FUNCTION_NAME(number);
+        SCRIPTABLE_FUNCTION_INITIALIZATION_END;
+
+        SCRIPTABLE_FUNCTION_INITIALIZATION_BEGIN(Test);
+        SCRIPTABLE_FUNCTION_RETURN_TYPE(LDS::Vector<unsigned int>);
+        SCRIPTABLE_FUNCTION_NAME(numbers);
         SCRIPTABLE_FUNCTION_INITIALIZATION_END;
 
         SCRIPTABLE_FUNCTIONS_INITIALIZATION_END;
