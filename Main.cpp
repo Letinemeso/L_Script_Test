@@ -42,6 +42,12 @@ public:
         m_number = _number;
     }
 
+    void print_data()
+    {
+        std::cout << "m_string: " << m_string << std::endl;
+        std::cout << "m_number: " << m_number << std::endl;
+    }
+
 public:
     Test()
     {
@@ -57,6 +63,10 @@ public:
         SCRIPTABLE_FUNCTION_ARG(unsigned int);
         SCRIPTABLE_FUNCTION_INITIALIZATION_END;
 
+        SCRIPTABLE_FUNCTION_INITIALIZATION_BEGIN(Test);
+        SCRIPTABLE_FUNCTION_NAME(print_data);
+        SCRIPTABLE_FUNCTION_INITIALIZATION_END;
+
         SCRIPTABLE_FUNCTIONS_INITIALIZATION_END;
     }
 
@@ -69,8 +79,6 @@ public:
     void test()
     {
         m_script->run();
-        std::cout << "m_string: " << m_string << std::endl;
-        std::cout << "m_number: " << m_number << std::endl;
     }
 
 };
