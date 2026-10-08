@@ -1,0 +1,35 @@
+||script_stub||
+\
+    |type|
+    \
+        "LScript::Python_Script_Stub"
+    /
+
+    |script_name|
+    \
+        "Test Script"
+    /
+
+#|source_code|
+\
+    "
+print('ass')
+    "
+/#
+
+    |source_code|
+    \
+        "
+
+import Engine
+
+Engine.log('its working!')
+Engine.log(123)
+
+test.set_number(111)
+test.set_string('ass whooping!')
+test.print_data()
+
+        "
+    /
+/
