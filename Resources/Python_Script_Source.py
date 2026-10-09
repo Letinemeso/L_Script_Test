@@ -1,12 +1,17 @@
 import Debug
 import Math
+import Containers
 
-print('its working!')
-print(123)
+vi = Containers.Vector_float()
 
-# test.set_number(111)
-# test.set_string('ass whooping!')
-# test.print_data()
+vi.push(1.5)
+vi.push(2.5)
+vi.push(3.5)
+vi.push(4.5)
+vi.push(5.5)
 
-test_vec = Math.vec3(1.0, 2.0, 3.0)
-print(test_vec)
+def print_vec(_vi):
+    for i in range(_vi.size()):
+        print(_vi[i]);
+
+print_vec(vi)

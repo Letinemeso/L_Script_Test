@@ -11,6 +11,8 @@
 
 int main()
 {
+    srand(time(nullptr));
+
     LV::Object_Constructor object_constructor;
 
     LScript::register_types(object_constructor);
