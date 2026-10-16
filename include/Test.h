@@ -42,8 +42,10 @@ private:
     Test_2 m_test;
 
 private:
-    std::string m_string;
+    std::string m_string = "default";
     unsigned int m_number = 0;
+
+    void* m_string_ptr = &m_string;
 
     LScript::Script_Stub* m_script_stub = nullptr;
     LScript::Script* m_script = nullptr;
@@ -52,6 +54,11 @@ public:
     void set_string(const std::string& _string)
     {
         m_string = _string;
+    }
+
+    std::string& get_string()
+    {
+        return m_string;
     }
 
     void set_number(unsigned int _number)
