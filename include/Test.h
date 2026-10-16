@@ -49,7 +49,7 @@ private:
     LScript::Script* m_script = nullptr;
 
 public:
-    void set_string(std::string _string)
+    void set_string(const std::string& _string)
     {
         m_string = _string;
     }

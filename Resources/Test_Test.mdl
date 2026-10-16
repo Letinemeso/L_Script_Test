@@ -5,6 +5,6 @@
         "Test"
     /
 
-    #<<<Script_Test>>>#
-    <<<Python_Script_Test>>>
+    <<<Script_Test>>>
+    #<<<Python_Script_Test>>>#
 /
